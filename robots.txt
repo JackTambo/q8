@@ -1,0 +1,11 @@
+# Allow all search engines to access the main content of the site
+User-agent: *
+Allow: /
+
+# Block certain directories (if they exist) that don't need to be indexed
+Disallow: /cgi-bin/
+Disallow: /temp/
+Disallow: /private/
+
+# Sitemap reference (important for search engines to find all pages)
+Sitemap: https://www.freepups.org/sitemap.xml
