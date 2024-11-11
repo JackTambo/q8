@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potato Story</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .chapter {
+            display: none;
+        }
+        .chapter.active {
+            display: block;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        .buttons button:disabled {
+            background-color: #ccc;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="chapter active" id="chapter1">
+            <h2>Chapter 1</h2>
+            <p>It was a normal Tuesday afternoon at Coles. Shoppers were pushing their carts, kids were hanging off trolleys, and the beeping of the checkout was the only sound filling the store. But then—rolling out of the veggie bin and into the middle of the aisle— a lone potato appeared.
+
+It just sat there, like it was daring someone to take it back to the produce section. A kid tugged on his mum’s shirt, wide-eyed. “Mum! Look! The potato’s moving!”
+
+But his mum just sighed. “It’s just a potato, sweetheart.” She pushed her cart right past it, ignoring the vegetable troublemaker entirely.
+
+A Coles employee spotted the potato and groaned. This wasn’t the first time a rogue vegetable had escaped the produce section. “Alright, you little spud,” he muttered, giving it a nudge with his shoe to roll it back toward the vegetables. But the potato, stubborn as ever, bounced right back into the aisle, making itself a nuisance.
+
+Another shopper came by, eyed the potato, and just shook his head. “I swear, they’ll give life to anything these days,” he muttered.
+
+Meanwhile, a group of kids were pointing and whispering, “Is it a magic potato?” One even tried to pick it up, but the potato wobbled in his hand, so he quickly dropped it and ran back to his mum.
+
+Eventually, a second Coles worker came over, scooped it up, and tossed it back in the bin with a sigh. But even as he walked away, the potato started wiggling again, ready for its next big escape.
+</p>
+        </div>
+
+        <div class="chapter" id="chapter2">
+            <h2>Chapter 2</h2>
+            <p>The potato rolled into the bakery section, carefully weaving through baskets of rolls and pastries. It spotted an unsuspecting customer reaching for a loaf of bread and sped up. Thwack! It smacked into her ankle. She frowned, glancing down, but when she saw it was just a potato, she rolled her eyes and walked off. But that only fueled the potato’s next move.
+
+It zipped into the snack aisle, strategically knocking over a row of chips. A Coles worker sighed, stacking the bags back up, while the potato darted off to create more chaos. It veered into the dairy section, bumping into the fridges and setting a carton of eggs wobbling precariously. A little kid gasped, “Mum, it’s the potato again!” but his mum just shook her head, muttering about “overactive imaginations.”
+
+The potato wasn’t finished. It aimed for the checkout lanes, rolling through like a bowling ball, knocking into a pyramid of canned beans. Cans tumbled everywhere, and one customer shrieked as the cans scattered.
+
+This potato had no plans of stopping. It rolled toward the automatic doors, ready to make its next escape—wherever the grocery store might lead.
+
+</p>
+        </div>
+
+        <div class="buttons">
+            <button onclick="prevChapter()" id="backButton" disabled>Back</button>
+            <button onclick="nextChapter()" id="nextButton">Next</button>
+        </div>
+    </div>
+
+    <script>
+        let currentChapter = 1;
+        const totalChapters = 2;
+
+        function showChapter(chapterNumber) {
+            // Hide all chapters
+            document.querySelectorAll('.chapter').forEach(chapter => chapter.classList.remove('active'));
+            // Show the current chapter
+            document.getElementById(`chapter${chapterNumber}`).classList.add('active');
+
+            // Enable or disable buttons based on chapter
+            document.getElementById('backButton').disabled = chapterNumber === 1;
+            document.getElementById('nextButton').disabled = chapterNumber === totalChapters;
+        }
+
+        function nextChapter() {
+            if (currentChapter < totalChapters) {
+                currentChapter++;
+                showChapter(currentChapter);
+            }
+        }
+
+        function prevChapter() {
+            if (currentChapter > 1) {
+                currentChapter--;
+                showChapter(currentChapter);
+            }
+        }
+    </script>
+
+</body>
+</html> 
