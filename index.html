@@ -1,15 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Email Link</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP GET Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        #response {
+            padding: 20px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body>
-    <center>
-        <h1>
-            <a href="mailto:Admin@Calmpathways.org" style="text-decoration: none; color: inherit;">
-                Admin@Calmpathways.org
-            </a>
-        </h1>
-    </center>
+    <div id="response">Fetching data...</div>
+
+    <script>
+        function httpGetAsync(url, callback) {
+            const xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function() {
+                if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+                    callback(xmlHttp.responseText);
+            }
+            xmlHttp.open("GET", url, true); // true for asynchronous
+            xmlHttp.send(null);
+        }
+
+        const url = "https://ipgeolocation.abstractapi.com/v1/?api_key=802634f4ba0d40cebed1d95f58960af6&ip_address=2a09:bac3:3d9:1d7::2f:8f";
+
+        httpGetAsync(url, function(response) {
+            document.getElementById('response').innerText = response;
+        });
+    </script>
 </body>
 </html>
